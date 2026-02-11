@@ -97,6 +97,24 @@ document.addEventListener('DOMContentLoaded', function () {
                 this.updateItemsPerView();
                 this.updateSlider();
             });
+
+            // Touch/swipe support
+            let touchStartX = 0;
+            let touchEndX = 0;
+            this.track.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+            this.track.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > 50) {
+                    if (diff > 0) {
+                        this.slide('next');
+                    } else {
+                        this.slide('prev');
+                    }
+                }
+            }, { passive: true });
         }
 
         updateItemsPerView() {

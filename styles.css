@@ -1445,6 +1445,54 @@ a {
         grid-template-columns: repeat(2, 1fr);
     }
 
+    /* Slider mobile layout: overlay arrows on viewport */
+    .instructor-slider {
+        position: relative;
+        gap: 0;
+    }
+
+    .slider-viewport {
+        width: 100%;
+        order: 1;
+    }
+
+    .slider-arrow {
+        position: absolute;
+        top: calc(50% - 30px);
+        transform: translateY(-50%);
+        width: 36px;
+        height: 36px;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        z-index: 3;
+    }
+
+    .slider-prev {
+        left: 4px;
+    }
+
+    .slider-next {
+        right: 4px;
+    }
+
+    .slider-dots {
+        order: 3;
+        margin-top: 16px;
+    }
+
+    .slider-track .instructor-card {
+        padding: 0 6px;
+    }
+
+    .instructor-tabs {
+        gap: 8px;
+    }
+
+    .tab-btn {
+        padding: 8px 20px;
+        font-size: 0.82rem;
+    }
+
     .why-cards {
         grid-template-columns: 1fr;
         gap: 24px;
@@ -1570,8 +1618,19 @@ a {
         margin: 0 auto;
     }
 
+    .slider-arrow {
+        width: 32px;
+        height: 32px;
+    }
+
+    .slider-arrow svg {
+        width: 16px;
+        height: 16px;
+    }
+
     .slider-track .instructor-card {
         flex: 0 0 100%;
+        padding: 0 20px;
         /* Show 1 card */
     }
 
