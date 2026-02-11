@@ -36,7 +36,7 @@
 
 html {
     scroll-behavior: smooth;
-    scroll-snap-type: y mandatory;
+    /* scroll-snap-type: y mandatory; Removed */
 }
 
 body {
@@ -97,7 +97,7 @@ a {
 .closing {
     min-height: 100vh;
     min-height: 100dvh;
-    scroll-snap-align: start;
+    /* scroll-snap-align: start; Removed */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -1445,47 +1445,65 @@ a {
         grid-template-columns: repeat(2, 1fr);
     }
 
-    /* Slider mobile layout: overlay arrows on viewport */
+    /* Instructors section mobile */
+    .instructors {
+        justify-content: flex-start;
+    }
+
+    .instructors .section-title {
+        font-size: 1.4rem;
+    }
+
+    .instructors .section-subtitle {
+        font-size: 0.85rem;
+        padding: 0 8px;
+    }
+
+    /* Slider → Grid on mobile */
     .instructor-slider {
-        position: relative;
-        gap: 0;
+        display: none;
+        padding: 0;
+        max-width: 100%;
+    }
+
+    .instructor-slider.active {
+        display: block;
     }
 
     .slider-viewport {
         width: 100%;
-        order: 1;
+        overflow: visible;
     }
 
-    .slider-arrow {
-        position: absolute;
-        top: calc(50% - 30px);
-        transform: translateY(-50%);
-        width: 36px;
-        height: 36px;
-        background: rgba(255, 255, 255, 0.9);
-        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
-        z-index: 3;
-    }
-
-    .slider-prev {
-        left: 4px;
-    }
-
-    .slider-next {
-        right: 4px;
-    }
-
-    .slider-dots {
-        order: 3;
-        margin-top: 16px;
+    .slider-track {
+        display: grid !important;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        transform: none !important;
+        max-width: none;
     }
 
     .slider-track .instructor-card {
-        padding: 0 6px;
+        flex: none;
+        padding: 0;
+        width: 100%;
+    }
+
+    .slider-arrow {
+        display: none;
+    }
+
+    .slider-dots {
+        display: none;
+    }
+
+    .card-image {
+        aspect-ratio: 4 / 5;
     }
 
     .instructor-tabs {
         gap: 8px;
+        margin-bottom: 20px;
     }
 
     .tab-btn {
@@ -1578,6 +1596,11 @@ a {
 
     .timeline-header {
         flex-wrap: wrap;
+        align-items: flex-start;
+    }
+
+    .phase-icon {
+        margin-left: 16px;
     }
 
     .phase-label {
@@ -1618,20 +1641,29 @@ a {
         margin: 0 auto;
     }
 
-    .slider-arrow {
-        width: 32px;
-        height: 32px;
-    }
-
-    .slider-arrow svg {
-        width: 16px;
-        height: 16px;
+    /* Keep 2-column grid, adjust sizing for small screens */
+    .slider-track {
+        gap: 8px;
     }
 
     .slider-track .instructor-card {
-        flex: 0 0 100%;
-        padding: 0 20px;
-        /* Show 1 card */
+        padding: 0;
+    }
+
+    .card-image {
+        aspect-ratio: 1;
+    }
+
+    .card-info {
+        padding: 10px 12px;
+    }
+
+    .card-info h4 {
+        font-size: 0.82rem;
+    }
+
+    .card-info .role {
+        font-size: 0.72rem;
     }
 
     .nav-container {
