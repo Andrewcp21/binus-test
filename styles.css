@@ -76,7 +76,7 @@ a {
 .section-subtitle {
     text-align: center;
     color: var(--body-text);
-    font-size: 1rem;
+    font-size: 1.1rem;
     margin-bottom: 32px;
 }
 
@@ -238,7 +238,7 @@ a {
 
 .hero-subtitle {
     font-weight: 600;
-    font-size: 1.05rem;
+    font-size: 1.155rem;
     color: var(--black);
     margin-bottom: 16px;
     line-height: 1.4;
@@ -1323,7 +1323,7 @@ a {
 }
 
 .closing-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.21rem;
     font-weight: 700;
     margin-bottom: 12px;
     color: var(--white);
@@ -1419,7 +1419,7 @@ a {
     }
 
     .hero-subtitle {
-        font-size: 1.05rem;
+        font-size: 1.155rem;
     }
 
     .hero-subtitle br {
@@ -1455,7 +1455,7 @@ a {
     }
 
     .instructors .section-subtitle {
-        font-size: 0.85rem;
+        font-size: 0.935rem;
         padding: 0 8px;
     }
 
