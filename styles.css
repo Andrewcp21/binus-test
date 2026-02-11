@@ -516,7 +516,7 @@ a {
    Section 3: Certificate
    ======================================== */
 .certificate {
-    background: var(--white);
+    background: var(--light-bg);
 }
 
 .certificate-title {
