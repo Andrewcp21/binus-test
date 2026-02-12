@@ -142,6 +142,18 @@ a {
     z-index: 0;
 }
 
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('images/Grid Background.png');
+    background-position: center;
+    background-size: 200% auto;
+    background-repeat: repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .hero-ribbon {
     position: absolute;
     z-index: 1;
@@ -206,7 +218,7 @@ a {
 }
 
 .hero-logos img {
-    height: 44px;
+    height: 64px;
     width: auto;
     object-fit: contain;
 }
@@ -306,9 +318,9 @@ a {
 }
 
 .btn-primary {
-    background: var(--cta-red);
+    background: linear-gradient(180deg, #F13C57, #E23A53);
     color: var(--white);
-    border: 2px solid var(--cta-red);
+    border: 2px solid #E23A53;
 }
 
 .btn-primary:hover {
@@ -781,23 +793,23 @@ a {
 }
 
 .phase-navy {
-    background: #1e3a5f;
+    background: linear-gradient(180deg, #4158D0, #3043A8);
 }
 
 .phase-blue {
-    background: var(--phase-blue);
+    background: linear-gradient(180deg, #0693E3, #0183CD);
 }
 
 .phase-purple {
-    background: var(--phase-purple);
+    background: linear-gradient(180deg, #FF6900, #EC6100);
 }
 
 .phase-yellow {
-    background: var(--phase-yellow);
+    background: linear-gradient(180deg, #FCB900, #EAAC00);
 }
 
 .phase-red {
-    background: var(--phase-red);
+    background: linear-gradient(180deg, #F13C57, #DE3952);
 }
 
 .phase-body {
@@ -856,6 +868,7 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
+    background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
 }
 
 .timeline-item.active .phase-dropdown {
@@ -1450,28 +1463,8 @@ a {
 .closing-bg {
     position: absolute;
     inset: 0;
-    background: #111111;
+    background: #000000;
     z-index: 0;
-}
-
-.binary-overlay-dark {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.binary-overlay-dark::before {
-    content: "01010011 01101001 01010101 10110110 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011";
-    position: absolute;
-    inset: 0;
-    font-size: 15px;
-    line-height: 2.2;
-    letter-spacing: 10px;
-    color: rgba(255, 255, 255, 0.12);
-    word-break: break-all;
-    overflow: hidden;
-    font-family: 'Courier New', monospace;
-    padding: 10px 20px;
 }
 
 .closing-hand {
@@ -1527,14 +1520,14 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
 }
 
 .btn-cta {
     display: block;
     width: 100%;
-    padding: 24px 40px;
+    padding: 28px 40px;
     background: linear-gradient(180deg, #F87171, #E8445A);
     color: var(--white);
     font-size: 1.3rem;
@@ -1555,11 +1548,14 @@ a {
     display: block;
     width: 100%;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px 24px;
-    border-radius: 0 0 16px 16px;
+    font-style: italic;
+    color: #E8445A;
+    background: #FFE4E8;
+    padding: 14px 24px;
+    border-radius: 12px;
     text-align: center;
+    line-height: 1.5;
+    margin-top: 12px;
 }
 
 /* ========================================
@@ -1610,7 +1606,18 @@ a {
 
     .value-cards {
         grid-template-columns: 1fr;
+        animation: none;
     }
+
+    .value-card {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease both;
+    }
+
+    .value-card:nth-child(1) { animation-delay: 0.6s; }
+    .value-card:nth-child(2) { animation-delay: 0.9s; }
+    .value-card:nth-child(3) { animation-delay: 1.2s; }
+    .value-card:nth-child(4) { animation-delay: 1.5s; }
 
     .cta-buttons {
         flex-direction: column;
@@ -1741,9 +1748,14 @@ a {
         grid-template-columns: 1fr;
     }
 
+    .hero-bg::after {
+        background-size: 150% auto;
+    }
+
     .hero-ribbon-blue {
-        width: 200px;
-        left: -40px;
+        width: 140px;
+        left: -30px;
+        top: -10px;
     }
 
     .hero-ribbon-yellow {
@@ -1757,7 +1769,7 @@ a {
     }
 
     .hero-logos img {
-        height: 24px;
+        height: 44px;
     }
 
     .closing-hand-robot {

@@ -156,6 +156,18 @@ a {
     z-index: 0;
 }
 
+.hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url('https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/Grid%20Background.png');
+    background-position: center;
+    background-size: 200% auto;
+    background-repeat: repeat;
+    opacity: 0.6;
+    pointer-events: none;
+}
+
 .hero-ribbon {
     position: absolute;
     z-index: 1;
@@ -220,7 +232,7 @@ a {
 }
 
 .hero-logos img {
-    height: 44px;
+    height: 64px;
     width: auto;
     object-fit: contain;
 }
@@ -320,9 +332,9 @@ a {
 }
 
 .btn-primary {
-    background: var(--cta-red);
+    background: linear-gradient(180deg, #F13C57, #E23A53);
     color: var(--white);
-    border: 2px solid var(--cta-red);
+    border: 2px solid #E23A53;
 }
 
 .btn-primary:hover {
@@ -795,23 +807,23 @@ a {
 }
 
 .phase-navy {
-    background: #1e3a5f;
+    background: linear-gradient(180deg, #4158D0, #3043A8);
 }
 
 .phase-blue {
-    background: var(--phase-blue);
+    background: linear-gradient(180deg, #0693E3, #0183CD);
 }
 
 .phase-purple {
-    background: var(--phase-purple);
+    background: linear-gradient(180deg, #FF6900, #EC6100);
 }
 
 .phase-yellow {
-    background: var(--phase-yellow);
+    background: linear-gradient(180deg, #FCB900, #EAAC00);
 }
 
 .phase-red {
-    background: var(--phase-red);
+    background: linear-gradient(180deg, #F13C57, #DE3952);
 }
 
 .phase-body {
@@ -870,6 +882,7 @@ a {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s ease;
+    background: linear-gradient(180deg, #f4f7fb 0%, #ffffff 100%);
 }
 
 .timeline-item.active .phase-dropdown {
@@ -1464,28 +1477,8 @@ a {
 .closing-bg {
     position: absolute;
     inset: 0;
-    background: #111111;
+    background: #000000;
     z-index: 0;
-}
-
-.binary-overlay-dark {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-}
-
-.binary-overlay-dark::before {
-    content: "01010011 01101001 01010101 10110110 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011 01010110 10110101 01101001 01010011 10101010 01010101 10110110 01001011";
-    position: absolute;
-    inset: 0;
-    font-size: 15px;
-    line-height: 2.2;
-    letter-spacing: 10px;
-    color: rgba(255, 255, 255, 0.12);
-    word-break: break-all;
-    overflow: hidden;
-    font-family: 'Courier New', monospace;
-    padding: 10px 20px;
 }
 
 .closing-hand {
@@ -1541,14 +1534,14 @@ a {
     flex-direction: column;
     align-items: center;
     gap: 0;
-    max-width: 480px;
+    max-width: 520px;
     margin: 0 auto;
 }
 
 .btn-cta {
     display: block;
     width: 100%;
-    padding: 24px 40px;
+    padding: 28px 40px;
     background: linear-gradient(180deg, #F87171, #E8445A);
     color: var(--white);
     font-size: 1.3rem;
@@ -1569,11 +1562,14 @@ a {
     display: block;
     width: 100%;
     font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.5);
-    background: rgba(255, 255, 255, 0.08);
-    padding: 10px 24px;
-    border-radius: 0 0 16px 16px;
+    font-style: italic;
+    color: #E8445A;
+    background: #FFE4E8;
+    padding: 14px 24px;
+    border-radius: 12px;
     text-align: center;
+    line-height: 1.5;
+    margin-top: 12px;
 }
 
 /* ========================================
@@ -1624,7 +1620,18 @@ a {
 
     .value-cards {
         grid-template-columns: 1fr;
+        animation: none;
     }
+
+    .value-card {
+        opacity: 0;
+        animation: fadeInUp 0.8s ease both;
+    }
+
+    .value-card:nth-child(1) { animation-delay: 0.6s; }
+    .value-card:nth-child(2) { animation-delay: 0.9s; }
+    .value-card:nth-child(3) { animation-delay: 1.2s; }
+    .value-card:nth-child(4) { animation-delay: 1.5s; }
 
     .cta-buttons {
         flex-direction: column;
@@ -1755,9 +1762,14 @@ a {
         grid-template-columns: 1fr;
     }
 
+    .hero-bg::after {
+        background-size: 150% auto;
+    }
+
     .hero-ribbon-blue {
-        width: 200px;
-        left: -40px;
+        width: 140px;
+        left: -30px;
+        top: -10px;
     }
 
     .hero-ribbon-yellow {
@@ -1771,7 +1783,7 @@ a {
     }
 
     .hero-logos img {
-        height: 24px;
+        height: 44px;
     }
 
     .closing-hand-robot {
@@ -1881,10 +1893,10 @@ a {
                 <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/program%20logo.png" alt="GreatNusa">
             </div>
             <h1 class="hero-title">Applied AI, Analytics &<br>Automation Program</h1>
-            <p class="hero-subtitle">Become an AI Champion and gain the unfair advantage<br>to accelerate your career
+            <p class="hero-subtitle">Become an AI Champion and gain the unfair advantage<br> to accelerate your career
             </p>
             <div class="cta-buttons">
-                <a href="#" class="btn btn-primary">Apply Now</a>
+                <a href="https://revou-applied-ai.paperform.co" target="_blank" class="btn btn-primary">Apply Now</a>
                 <a href="https://meetings-na2.hubspot.com/rani9/revouxbinus" class="btn btn-secondary"
                     target="_blank">Book Consultation</a>
             </div>
@@ -1904,8 +1916,8 @@ a {
                             <path d="M20 6L9 17l-5-5" />
                         </svg>
                     </div>
-                    <p>Earn a <strong>Professional Certificate</strong> from <strong>#1 Private University</strong> &
-                        <strong>The Best Bootcamp</strong> in Indonesia
+                    <p>Earn a <strong>Professional Certificate</strong> from <strong>Indonesia's #1 University</strong> and
+                        <strong>the Leading Bootcamp</strong>
                     </p>
                 </div>
                 <div class="value-card">
@@ -1914,7 +1926,7 @@ a {
                             <path d="M20 6L9 17l-5-5" />
                         </svg>
                     </div>
-                    <p>Build <strong>live AI workflows</strong>, Solves <strong>Real Business Problems</strong></p>
+                    <p>Build <strong>live AI workflows</strong>, solve <strong>real Business Problems</strong></p>
                 </div>
                 <div class="value-card">
                     <div class="check-icon">
@@ -1951,15 +1963,13 @@ a {
                     <div class="le-oncampus">
                         <span class="le-differentiator">PROGRAM DIFFERENTIATOR</span>
                         <h3>On-Campus Session at BINUS</h3>
-                        <p>Three times during the program, you'll come to campus for intensive workshops. These sessions
-                            are for the work that doesn't happen well over Zoom — collaborative problem-solving, live
-                            prototypes reviews, and direct feedback from instructors.</p>
+                        <p>Three times during the program, you'll have the option to join us at the BINUS campus for in-person sessions designed for high-stakes learning that transcends Zoom. These moments are built for collaborative problem-solving, live prototype reviews, and deep-dive discussions that foster a powerful professional network extending well beyond the program.</p>
                         <ul class="le-checklist">
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
                                     <path d="M20 6L9 17l-5-5" />
                                 </svg>
-                                Hands-on workshops with BINUS faculty and industry practitioners
+                                Engage in panel discussions and industry talks with BINUS faculty and practitioners.
                             </li>
                             <li>
                                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
@@ -2023,7 +2033,7 @@ a {
         <div class="container certificate-container">
             <div class="certificate-text">
                 <span class="certificate-pre">EARN CERTIFICATE FROM</span>
-                <h2 class="certificate-title">Indonesia's #1 University<br>and The Leading Bootcamp.</h2>
+                <h2 class="certificate-title">Indonesia's #1 University<br>and the Leading Bootcamp</h2>
             </div>
             <div class="certificate-frame" id="cert-tilt">
                 <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/certificate-blur.png" alt="Certificate of Achievement" class="certificate-img"
@@ -2041,7 +2051,7 @@ a {
     <section id="why-join" class="why-join">
         <div class="container">
             <h2 class="section-title">Why Join This Program</h2>
-            <p class="section-subtitle">The Sweet Spot Between Theory and Practice</p>
+            <p class="section-subtitle">Real skills. Real credential. Real career impact</p>
             <div class="why-cards">
                 <div class="why-card">
                     <div class="why-icon">
@@ -2283,18 +2293,47 @@ a {
     <!-- Section 7: Faculty -->
     <section id="instructors" class="instructors">
         <div class="container">
-            <h2 class="section-title">Learn from The Best of Both Worlds </h2>
+            <h2 class="section-title">Learn from the best of both worlds </h2>
             <p class="section-subtitle">Learn through foundational mastery from BINUS academic professors and real-world
                 execution from industry experts</p>
 
             <!-- Tabs -->
             <div class="instructor-tabs">
-                <button class="tab-btn active" data-tab="industry">Industry Experts</button>
-                <button class="tab-btn" data-tab="binus">BINUS Faculty</button>
+                <button class="tab-btn active" data-tab="binus">BINUS Faculty</button>
+                <button class="tab-btn" data-tab="industry">Industry Experts</button>
+            </div>
+
+            <!-- BINUS Faculty Profile -->
+            <div class="instructor-profile active" id="binus-content" data-tab-content="binus">
+                <div class="profile-image">
+                    <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/prof.png" alt="Prof. Dr. Ir. Derwin Suhartono">
+                </div>
+                <div class="profile-info">
+                    <h3>Prof. Dr. Ir. Derwin Suhartono, S.Kom., MTI</h3>
+                    <p class="profile-role">Dekan School of Computer Science BINUS University</p>
+                    <ul class="profile-details">
+                        <li>Professor in Artificial Intelligence</li>
+                        <li>15+ years of experience in academia</li>
+                        <li>Expert in Natural Language Processing (NLP) & Personality Computation</li>
+                    </ul>
+                    <a href="https://www.linkedin.com/in/derwin-suhartono-26645b35/" class="card-linkedin" target="_blank">See on LinkedIn</a>
+                </div>
             </div>
 
             <!-- Industry Experts Grid -->
-            <div class="instructor-grid active" data-tab-content="industry">
+            <div class="instructor-grid" data-tab-content="industry">
+                <div class="instructor-card">
+                    <div class="card-image">
+                        <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/brandy.png" alt="Brandy">
+                        <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/loreal.png" alt="L'Oréal" class="card-logo">
+                    </div>
+                    <div class="card-info">
+                        <h4>Brandy</h4>
+                        <p class="role">Data & Analytics Senior Manager at L'Oréal</p>
+                        <a href="https://www.linkedin.com/in/brandyskom/" class="card-linkedin" target="_blank">See on
+                            LinkedIn</a>
+                    </div>
+                </div>
                 <div class="instructor-card">
                     <div class="card-image">
                         <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/Gabriel.png" alt="Gabriel Handowo">
@@ -2321,18 +2360,6 @@ a {
                 </div>
                 <div class="instructor-card">
                     <div class="card-image">
-                        <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/brandy.png" alt="Brandy">
-                        <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/loreal.png" alt="L'Oréal" class="card-logo">
-                    </div>
-                    <div class="card-info">
-                        <h4>Brandy</h4>
-                        <p class="role">Data & Analytics Senior Manager at L'Oréal</p>
-                        <a href="https://www.linkedin.com/in/brandyskom/" class="card-linkedin" target="_blank">See on
-                            LinkedIn</a>
-                    </div>
-                </div>
-                <div class="instructor-card">
-                    <div class="card-image">
                         <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/husein.png" alt="Husein Indra Kusuma">
                         <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/fw.png" alt="Forewave" class="card-logo">
                     </div>
@@ -2342,22 +2369,6 @@ a {
                         <a href="https://www.linkedin.com/in/huseindra/" class="card-linkedin" target="_blank">See on
                             LinkedIn</a>
                     </div>
-                </div>
-            </div>
-
-            <!-- BINUS Faculty Profile -->
-            <div class="instructor-profile" id="binus-content" data-tab-content="binus">
-                <div class="profile-image">
-                    <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/BINUS%20Instructors/prof.png" alt="Prof. Dr. Ir. Derwin Suhartono">
-                </div>
-                <div class="profile-info">
-                    <h3>Prof. Dr. Ir. Derwin Suhartono, S.Kom., MTI</h3>
-                    <p class="profile-role">Dekan School of Computer Science BINUS University</p>
-                    <ul class="profile-details">
-                        <li>Professor in Artificial Intelligence</li>
-                        <li>15+ years of experience in academia</li>
-                        <li>Expert in Natural Language Processing (NLP) & Personality Computation</li>
-                    </ul>
                 </div>
             </div>
         </div>
@@ -2516,7 +2527,6 @@ a {
     <!-- Section 12: Closing CTA -->
     <section id="closing" class="closing">
         <div class="closing-bg">
-            <div class="binary-overlay-dark"></div>
             <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/Robotic%20Hands.png" alt="" class="closing-hand closing-hand-robot">
             <img src="https://raw.githubusercontent.com/Andrewcp21/binus-test/main/images/Human%20Hands.png" alt="" class="closing-hand closing-hand-human">
         </div>
@@ -2526,10 +2536,8 @@ a {
             <p class="closing-body">Join the next cohort of professionals who aren't just using AI, they are building
                 with it.</p>
             <div class="closing-actions">
-                <a href="#" class="btn btn-cta">APPLY NOW</a>
-                <p class="closing-note">Applications close <strong>24 April 2026</strong>. Limited seats available per
-                    cohort to ensure
-                    mentorship quality.</p>
+                <a href="https://revou-applied-ai.paperform.co" target="_blank" class="btn btn-cta">APPLY NOW</a>
+                <p class="closing-note">Applications close on <strong>26 April 2026</strong>. Limited seats available per cohort to ensure mentorship quality.</p>
             </div>
         </div>
     </section>
@@ -2604,6 +2612,20 @@ document.addEventListener('DOMContentLoaded', function () {
         pdObserver.observe(pdSection);
     }
 
+    // --- Curriculum Phase 1 Auto-Open on Scroll ---
+    const curriculumSection = document.querySelector('.curriculum');
+    if (curriculumSection && timelineItems.length > 0) {
+        const currObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    timelineItems[0].classList.add('active');
+                    currObserver.unobserve(curriculumSection);
+                }
+            });
+        }, { threshold: 0.3 });
+        currObserver.observe(curriculumSection);
+    }
+
     // --- Instructor Tab Toggle ---
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('[data-tab-content]');
@@ -2619,6 +2641,61 @@ document.addEventListener('DOMContentLoaded', function () {
 
             const target = document.querySelector(`[data-tab-content="${tabId}"]`);
             if (target) target.classList.add('active');
+        });
+    });
+
+    // --- UTM Tracking via postMessage (Wix iframe) ---
+    var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content'];
+
+    // Load any previously stored UTMs from localStorage
+    var storedUtms = {};
+    try {
+        var saved = localStorage.getItem('storedUtms');
+        if (saved) storedUtms = JSON.parse(saved);
+    } catch (e) { /* localStorage not available */ }
+
+    // 1. Signal to Wix that this iframe is ready to receive UTMs
+    window.parent.postMessage('ready', '*');
+
+    // 2. Listen for UTM data from the parent page
+    window.addEventListener('message', function (event) {
+        var data = event.data;
+        if (data && typeof data === 'object') {
+            utmKeys.forEach(function (key) {
+                if (data[key]) {
+                    storedUtms[key] = data[key];
+                }
+            });
+            // Persist to localStorage so UTMs survive page navigations
+            try {
+                localStorage.setItem('storedUtms', JSON.stringify(storedUtms));
+            } catch (e) { /* localStorage not available */ }
+            console.log('HTML received UTMs:', storedUtms);
+        }
+    });
+
+    // 3. Build the destination URL with non-empty UTM params appended
+    function buildCtaUrl(baseUrl) {
+        var queryString = utmKeys
+            .filter(function (key) { return storedUtms[key]; })
+            .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(storedUtms[key]); })
+            .join('&');
+        if (!queryString) return baseUrl;
+        var separator = baseUrl.indexOf('?') !== -1 ? '&' : '?';
+        return baseUrl + separator + queryString;
+    }
+
+    // 4. Intercept ALL CTA button clicks to redirect the top-level parent page with UTMs
+    var ctaLinks = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-cta');
+    ctaLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
+            var href = link.getAttribute('href');
+            if (href) {
+                e.preventDefault();
+                var finalUrl = buildCtaUrl(href);
+                console.log('CTA redirect:', finalUrl);
+                window.top.location.href = finalUrl;
+            }
         });
     });
 

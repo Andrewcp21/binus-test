@@ -67,6 +67,20 @@ document.addEventListener('DOMContentLoaded', function () {
         pdObserver.observe(pdSection);
     }
 
+    // --- Curriculum Phase 1 Auto-Open on Scroll ---
+    const curriculumSection = document.querySelector('.curriculum');
+    if (curriculumSection && timelineItems.length > 0) {
+        const currObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    timelineItems[0].classList.add('active');
+                    currObserver.unobserve(curriculumSection);
+                }
+            });
+        }, { threshold: 0.3 });
+        currObserver.observe(curriculumSection);
+    }
+
     // --- Instructor Tab Toggle ---
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('[data-tab-content]');
@@ -84,5 +98,24 @@ document.addEventListener('DOMContentLoaded', function () {
             if (target) target.classList.add('active');
         });
     });
+
+    // --- UTM Tracking for CTA Links ---
+    const utmParams = ['utm_campaign', 'utm_content', 'utm_medium', 'utm_source'];
+    const pageParams = new URLSearchParams(window.location.search);
+    const utmString = utmParams
+        .filter(function (key) { return pageParams.has(key); })
+        .map(function (key) { return key + '=' + encodeURIComponent(pageParams.get(key)); })
+        .join('&');
+
+    if (utmString) {
+        var ctaLinks = document.querySelectorAll('.btn-primary, .btn-cta');
+        ctaLinks.forEach(function (link) {
+            var href = link.getAttribute('href');
+            if (href && href.indexOf('paperform.co') !== -1) {
+                var separator = href.indexOf('?') !== -1 ? '&' : '?';
+                link.setAttribute('href', href + separator + utmString);
+            }
+        });
+    }
 
 });
