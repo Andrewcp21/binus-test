@@ -53,6 +53,20 @@ document.addEventListener('DOMContentLoaded', function () {
         observer.observe(certFrame);
     }
 
+    // --- Program Details Fade In ---
+    const pdSection = document.querySelector('.program-details');
+    if (pdSection) {
+        const pdObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    pdSection.classList.add('pd-visible');
+                    pdObserver.unobserve(pdSection);
+                }
+            });
+        }, { threshold: 0.2 });
+        pdObserver.observe(pdSection);
+    }
+
     // --- Instructor Tab Toggle ---
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('[data-tab-content]');
