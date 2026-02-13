@@ -148,7 +148,7 @@ a {
     inset: 0;
     background-image: url('images/Grid Background.png');
     background-position: center;
-    background-size: 200% auto;
+    background-size: 80% auto;
     background-repeat: repeat;
     opacity: 0.6;
     pointer-events: none;
@@ -180,9 +180,11 @@ a {
         transform: translateX(-120%);
         opacity: 0;
     }
+
     30% {
         opacity: 1;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
@@ -194,9 +196,11 @@ a {
         transform: translateX(120%);
         opacity: 0;
     }
+
     30% {
         opacity: 1;
     }
+
     100% {
         transform: translateX(0);
         opacity: 1;
@@ -256,6 +260,7 @@ a {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -569,15 +574,15 @@ a {
 .certificate {
     background: var(--white);
     position: relative;
-    padding: 100px 0;
+    padding: 16px 0 48px;
 }
 
 .certificate-container {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 60px;
-    max-width: 1060px;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1100px;
 }
 
 .certificate-text {
@@ -585,27 +590,21 @@ a {
     text-align: left;
 }
 
-.certificate-pre {
-    display: block;
-    color: #0ea5e9;
-    font-size: 1.25rem;
-    font-weight: 500;
-    margin-bottom: 24px;
-    letter-spacing: 1px;
-}
-
 .certificate-title {
-    color: var(--dark-text);
     font-family: var(--font-main);
     font-weight: 800;
-    font-size: 3rem;
-    line-height: 1.1;
+    font-size: 2.2rem;
+    line-height: 1.2;
     text-align: left;
+    background: linear-gradient(90deg, #05314A 0%, #0f94e1 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
 }
 
 .certificate-frame {
     flex: 1;
-    max-width: 680px;
+    max-width: 460px;
     padding: 0;
     border-radius: 8px;
     background: none;
@@ -668,12 +667,7 @@ a {
 
     .certificate-title {
         text-align: center;
-        font-size: 2.2rem;
-    }
-
-    .certificate-pre {
-        font-size: 1.1rem;
-        margin-bottom: 12px;
+        font-size: 1.7rem;
     }
 
     .certificate-frame {
@@ -877,7 +871,7 @@ a {
 
 .phase-details {
     list-style: none;
-    padding: 0 28px 24px 200px;
+    padding: 20px 28px 24px 200px;
     display: flex;
     flex-direction: column;
     gap: 10px;
@@ -1285,10 +1279,21 @@ a {
     transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
-.program-details.pd-visible .detail-card:nth-child(1) { transition-delay: 0.2s; }
-.program-details.pd-visible .detail-card:nth-child(2) { transition-delay: 0.35s; }
-.program-details.pd-visible .detail-card:nth-child(3) { transition-delay: 0.5s; }
-.program-details.pd-visible .detail-card:nth-child(4) { transition-delay: 0.65s; }
+.program-details.pd-visible .detail-card:nth-child(1) {
+    transition-delay: 0.2s;
+}
+
+.program-details.pd-visible .detail-card:nth-child(2) {
+    transition-delay: 0.35s;
+}
+
+.program-details.pd-visible .detail-card:nth-child(3) {
+    transition-delay: 0.5s;
+}
+
+.program-details.pd-visible .detail-card:nth-child(4) {
+    transition-delay: 0.65s;
+}
 
 .program-details.pd-visible .detail-card {
     opacity: 1;
@@ -1614,10 +1619,21 @@ a {
         animation: fadeInUp 0.8s ease both;
     }
 
-    .value-card:nth-child(1) { animation-delay: 0.6s; }
-    .value-card:nth-child(2) { animation-delay: 0.9s; }
-    .value-card:nth-child(3) { animation-delay: 1.2s; }
-    .value-card:nth-child(4) { animation-delay: 1.5s; }
+    .value-card:nth-child(1) {
+        animation-delay: 0.6s;
+    }
+
+    .value-card:nth-child(2) {
+        animation-delay: 0.9s;
+    }
+
+    .value-card:nth-child(3) {
+        animation-delay: 1.2s;
+    }
+
+    .value-card:nth-child(4) {
+        animation-delay: 1.5s;
+    }
 
     .cta-buttons {
         flex-direction: column;
@@ -1668,6 +1684,10 @@ a {
         flex: none;
         width: 100%;
         max-height: 300px;
+    }
+
+    .profile-image img {
+        object-position: center 20%;
     }
 
     .profile-info {
@@ -1815,7 +1835,7 @@ a {
     }
 
     .phase-details {
-        padding: 0 16px 20px 16px;
+        padding: 14px 20px 20px 20px;
     }
 }
 

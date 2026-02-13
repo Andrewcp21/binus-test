@@ -99,23 +99,59 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     });
 
-    // --- UTM Tracking for CTA Links ---
-    const utmParams = ['utm_campaign', 'utm_content', 'utm_medium', 'utm_source'];
-    const pageParams = new URLSearchParams(window.location.search);
-    const utmString = utmParams
-        .filter(function (key) { return pageParams.has(key); })
-        .map(function (key) { return key + '=' + encodeURIComponent(pageParams.get(key)); })
-        .join('&');
+    // --- UTM Tracking via postMessage (Wix iframe) ---
+    var utmKeys = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_ops', 'prog'];
+    var storedUtms = {};
 
-    if (utmString) {
-        var ctaLinks = document.querySelectorAll('.btn-primary, .btn-cta');
-        ctaLinks.forEach(function (link) {
+    // 1. Signal to Wix repeatedly until UTMs are received (handles timing differences)
+    var readyInterval = setInterval(function () {
+        window.parent.postMessage('ready', '*');
+    }, 500);
+
+    // Stop signaling after 10 seconds (UTMs either arrived or URL has none)
+    setTimeout(function () { clearInterval(readyInterval); }, 10000);
+
+    // 2. Listen for UTM data from the parent page
+    window.addEventListener('message', function (event) {
+        var data = event.data;
+        if (data && typeof data === 'object') {
+            var hasUtm = false;
+            utmKeys.forEach(function (key) {
+                if (data[key]) {
+                    storedUtms[key] = data[key];
+                    hasUtm = true;
+                }
+            });
+            if (hasUtm) {
+                clearInterval(readyInterval); // UTMs received, stop signaling
+                console.log('HTML received UTMs:', storedUtms);
+            }
+        }
+    });
+
+    // 3. Build the destination URL with non-empty UTM params appended
+    function buildCtaUrl(baseUrl) {
+        var queryString = utmKeys
+            .filter(function (key) { return storedUtms[key]; })
+            .map(function (key) { return encodeURIComponent(key) + '=' + encodeURIComponent(storedUtms[key]); })
+            .join('&');
+        if (!queryString) return baseUrl;
+        var separator = baseUrl.indexOf('?') !== -1 ? '&' : '?';
+        return baseUrl + separator + queryString;
+    }
+
+    // 4. Intercept ALL CTA button clicks to open with UTMs appended
+    var ctaLinks = document.querySelectorAll('.btn-primary, .btn-secondary, .btn-cta');
+    ctaLinks.forEach(function (link) {
+        link.addEventListener('click', function (e) {
             var href = link.getAttribute('href');
-            if (href && href.indexOf('paperform.co') !== -1) {
-                var separator = href.indexOf('?') !== -1 ? '&' : '?';
-                link.setAttribute('href', href + separator + utmString);
+            if (href) {
+                e.preventDefault();
+                var finalUrl = buildCtaUrl(href);
+                console.log('CTA redirect:', finalUrl);
+                window.open(finalUrl, '_blank');
             }
         });
-    }
+    });
 
 });
